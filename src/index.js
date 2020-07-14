@@ -16,6 +16,9 @@ app.get('/', (_, res) => {
 	const hi = 'Hi';
 	res.send('Hello from the other side..!');
 });
+app.get('/hello', (_, res) => {
+	res.send('New Feature');
+});
 
 app.get('/add', (_, res) => {
 	const User = mongoose.model('User', { name: String });
