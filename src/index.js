@@ -17,7 +17,7 @@ app.get('/', (_, res) => {
 	res.send('Hello from the other side..!');
 });
 app.get('/hello', (_, res) => {
-	res.send('New Feature');
+	res.send('New Feature 232323232');
 });
 
 app.get('/add', (_, res) => {
