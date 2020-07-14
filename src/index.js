@@ -13,6 +13,7 @@ const userRoutes = require('../routes/user');
 const postRoutes = require('../routes/post');
 
 app.get('/', (_, res) => {
+	const hi = 'Hi';
 	res.send('Hello World hi..!');
 });
 
