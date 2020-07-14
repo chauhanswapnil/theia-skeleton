@@ -9,11 +9,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
+
 const userRoutes = require('../routes/user');
 const postRoutes = require('../routes/post');
 
 app.get('/', (_, res) => {
-	res.send('Hello World hi..!');
+	res.send('Hello from the other side..!');
 });
 
 app.get('/add', (_, res) => {
