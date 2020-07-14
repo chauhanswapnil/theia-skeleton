@@ -14,7 +14,7 @@ const postRoutes = require('../routes/post');
 
 app.get('/', (_, res) => {
 	const hi = 'Hi';
-	res.send('Hello World hi..!');
+	res.send('Hello from the other side..!');
 });
 
 app.get('/add', (_, res) => {
