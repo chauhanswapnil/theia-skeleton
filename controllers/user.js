@@ -1,5 +1,3 @@
-const { checkUserExists } = require('../database/services/user');
-const checkAuth = require('../middlewares/auth');
 const User = require('../database/model/user');
 const fs = require('fs');
 const { sendErrorMessage } = require('../helpers');
