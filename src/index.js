@@ -13,8 +13,7 @@ const userRoutes = require('../routes/user');
 const postRoutes = require('../routes/post');
 
 app.get('/', (_, res) => {
-	const hi = 'Hi';
-	res.send('Hello from the other side..!');
+	res.send('Hello Jenkins..!');
 });
 app.get('/hello', (_, res) => {
 	res.send('New Feature 232323232-555555 COMPLETED');
