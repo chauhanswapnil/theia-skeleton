@@ -2,10 +2,17 @@ const admin = require('firebase-admin');
 require('dotenv').config();
 const serviceAccount = require('../theia-skeleton-firebase-key.json');
 const User = require('../database/model/user');
+require('dotenv').config();
 
 admin.initializeApp({
-	credential : admin.credential.cert(serviceAccount)
+	credential : admin.credential.cert(
+		JSON.parse(Buffer.from(process.env.GOOGLE_CONFIG_BASE64, 'base64').toString('ascii'))
+	)
 });
+
+// admin.initializeApp({
+// 	credential : admin.credential.cert(serviceAccount)
+// });
 
 const checkAuth = async (req, res, next) => {
 	const idToken = req.header('idToken');
