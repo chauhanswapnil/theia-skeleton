@@ -1,6 +1,7 @@
+const ERRORS = require('../helpers/error-codes');
 const admin = require('firebase-admin');
+const { sendErrorMessage } = require('../helpers');
 require('dotenv').config();
-// const serviceAccount = require('../theia-skeleton-firebase-key.json');
 const User = require('../database/model/user');
 require('dotenv').config();
 
@@ -26,29 +27,19 @@ const checkAuth = async (req, res, next) => {
 				next();
 			})
 			.catch(() => {
-				res.status(403).json({ error: { message: 'Unauthorized' } });
+				return res.status(ERRORS.UNAUTHORIZED).json(sendErrorMessage('Unauthorized'));
 			});
-	} else {
-		res.status(403).json({ error: { message: 'Unauthorized' } });
-	}
+	} else return res.status(ERRORS.UNAUTHORIZED).json(sendErrorMessage('Unauthorized'));
 };
 
 const getUserMiddleware = async (req, res, next) => {
 	const uid = req.uid;
 	User.findOne({ uid }).exec((err, user) => {
 		if (err) {
-			return res.status(400).json({
-				error : {
-					message : err.message
-				}
-			});
+			return res.status(ERRORS.INTERNAL_SERVER_ERROR).json(sendErrorMessage(err));
 		}
 		if (!user) {
-			return res.status(400).json({
-				error : {
-					message : 'User Not Found!'
-				}
-			});
+			return res.status(ERRORS.NOT_FOUND).json(sendErrorMessage('User Not Found'));
 		} else {
 			req.user = user;
 			next();
