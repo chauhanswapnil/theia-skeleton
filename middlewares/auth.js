@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 require('dotenv').config();
-const serviceAccount = require('../theia-skeleton-firebase-key.json');
+// const serviceAccount = require('../theia-skeleton-firebase-key.json');
 const User = require('../database/model/user');
 require('dotenv').config();
 
